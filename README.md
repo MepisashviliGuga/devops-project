@@ -125,7 +125,9 @@ git checkout -b dev
 git push -u origin dev
 ```
 
-> **Screenshot 1** — Take now: open your GitHub repository in the browser, click the branch dropdown, and capture the **main** and **dev** branches listed.
+**Screenshot 1 — GitHub Branches**
+
+![GitHub branches showing main and dev](screenshots/image1.png)
 
 ---
 
@@ -145,7 +147,11 @@ This script:
 - Creates `.env` with port configuration
 - Runs the full test suite to verify everything works
 
-> **Screenshot 2** — Take now: capture the **Git Bash terminal** showing the `setup.sh` output, from the "DevOps Project — Environment Setup" header all the way to "Setup Complete!" and the green test results.
+**Screenshot 2 — IaC Setup Script**
+
+![Setup script output part 1](screenshots/image2%201.png)
+
+![Setup script output part 2](screenshots/image%202%202.png)
 
 ---
 
@@ -158,7 +164,11 @@ npm start
 
 Open **http://localhost:3000** in your browser.
 
-> **Screenshot 3** — Take now: capture the **browser** showing the home page at `http://localhost:3000`. Then type your name in the form and submit it — capture the **JSON response** from `/greet/YourName`.
+**Screenshot 3 — Running Application**
+
+![App home page](screenshots/image%203%201.png)
+
+![Greet endpoint JSON response](screenshots/image%203%202.png)
 
 Stop the server with `Ctrl+C` before continuing.
 
@@ -183,9 +193,13 @@ Then open a **Pull Request** from `dev` → `main` on GitHub:
 
 The CI pipeline will trigger automatically.
 
-> **Screenshot 4** — Take now: go to your GitHub repo → **Actions** tab. Click the running workflow. Capture the **workflow summary page** showing the "Lint & Test" job with green checkmarks next to "Run ESLint" and "Run unit tests".
+**Screenshot 4 — CI Pipeline**
 
-> **Screenshot 5** — Take now: go to your **Pull Request** page and capture the green "All checks have passed" status at the bottom of the PR.
+![GitHub Actions CI pipeline passing](screenshots/image4.png)
+
+**Screenshot 5 — PR Checks Passed**
+
+![Pull request all checks passed](screenshots/image5.png)
 
 Merge the PR:
 ```bash
@@ -221,12 +235,13 @@ The script will:
 4. Start `green` on port 3000
 5. Verify the switchover
 
-> **Screenshot 6** — Take now: capture the **Git Bash terminal** showing the full `blue-green-deploy.sh` output, especially the lines:
-> - "Deploying to : green (port 3002)"
-> - "Health check PASSED on port 3002"
-> - "Deployment Successful!"
+**Screenshot 6 — Blue-Green Deployment**
 
-> **Screenshot 7** — Take now: refresh **http://localhost:3000** in the browser and capture the updated page showing **Version: 2.0.0 | Slot: green**.
+![Blue-green deployment script output](screenshots/image%206.png)
+
+**Screenshot 7 — Green Slot Active**
+
+![Browser showing green slot version 2.0.0](screenshots/image%207.png)
 
 ---
 
@@ -236,12 +251,9 @@ The script will:
 bash scripts/rollback.sh
 ```
 
-> **Screenshot 8** — Take now: capture the **Git Bash terminal** showing:
-> - "Current  : green"
-> - "Rollback : blue"
-> - "Rollback Successful! Active slot : blue -> http://localhost:3000"
+**Screenshot 8 — Rollback**
 
-Then refresh the browser and capture **http://localhost:3000** showing Slot: blue again.
+![Rollback script output](screenshots/image%208.png)
 
 ---
 
@@ -261,11 +273,13 @@ Leave it running for ~1 minute to collect several entries, then check the log:
 cat logs/health-check.log
 ```
 
-> **Screenshot 9** — Take now: capture the **Git Bash terminal** running the health-check script showing multiple `OK | HTTP 200` lines with timestamps.
+**Screenshot 9 — Health Check Monitor**
 
-> **Screenshot 10** — Take now: in a second terminal, run `cat logs/health-check.log` and capture the **log file contents**.
+![Health check monitor running](screenshots/image%209.png)
 
-**Simulate a failure:** Stop the app with `Ctrl+C`, wait 30 seconds, then capture the `FAIL | HTTP 000` lines appearing.
+**Screenshot 10 — Health Check Log File**
+
+![Health check log file contents](screenshots/image%2010.png)
 
 ---
 
@@ -309,18 +323,18 @@ Expected output: no ESLint errors.
 
 ## Screenshots Summary
 
-| # | What to capture | When |
-|---|---|---|
-| 1 | GitHub branch dropdown showing `main` and `dev` | After Step 3 |
-| 2 | Git Bash: full `setup.sh` output | After Step 4 |
-| 3 | Browser: home page + `/greet/Name` JSON | After Step 5 |
-| 4 | GitHub Actions: workflow run with green checkmarks | After Step 6 CI |
-| 5 | GitHub PR: "All checks have passed" banner | After Step 6 PR |
-| 6 | Git Bash: full `blue-green-deploy.sh` output | After Step 7 |
-| 7 | Browser: http://localhost:3000 showing Slot: green | After Step 7 |
-| 8 | Git Bash: `rollback.sh` output showing success | After Step 8 |
-| 9 | Git Bash: health-check monitor running with OK lines | After Step 9 |
-| 10 | Terminal: `cat logs/health-check.log` output | After Step 9 |
+| # | Description |
+|---|---|
+| 1 | GitHub branch dropdown — main and dev |
+| 2 | IaC setup.sh execution |
+| 3 | Running application in browser |
+| 4 | GitHub Actions CI pipeline passing |
+| 5 | Pull Request checks passed |
+| 6 | Blue-Green deployment output |
+| 7 | Green slot active in browser |
+| 8 | Rollback execution |
+| 9 | Health check monitor |
+| 10 | Health check log file |
 
 ---
 
